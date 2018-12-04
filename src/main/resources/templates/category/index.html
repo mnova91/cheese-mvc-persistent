@@ -17,7 +17,7 @@
         <th>Name</th>
     </tr>
 
-    <tr th:each="categories : ${categories}">
+    <tr th:each="category : ${categories}">
         <td th:text="${category.id}"></td>
         <td th:text="${category.name}"></td>
     </tr>
