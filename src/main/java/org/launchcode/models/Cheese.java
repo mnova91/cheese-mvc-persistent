@@ -1,5 +1,7 @@
 package org.launchcode.models;
 
+import org.launchcode.models.data.CategoryDao;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -62,7 +64,6 @@ public class Cheese {
         return category;
     }
 
-    public void setCategory(Category type) {
-        this.category = category;
-    }
+    public void setCategory(int categoryId, CategoryDao categoryDao)
+    { this.category = categoryDao.findOne(categoryId);}
 }

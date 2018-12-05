@@ -27,6 +27,8 @@ public class Category {
 
     public int getId() { return id; }
 
+    public List<Cheese> getCheeses() { return cheeses; }
+
     public String getName() { return name; }
 
     public void setName(String name) { this.name = name; }
