@@ -8,23 +8,18 @@
 
         <nav th:replace="fragments :: navigation"></nav>
 
-        <table class="table">
-
-            <tr>
-                <th>Name</th>
-                <th>Cheese</th>
-            </tr>
-
-            <tr>
-                <td th:text="${menu.name}"></td>
-                <td th:each="cheese : ${menu.cheeses}" th:text="cheese.name"></td>
-            </tr>
-
-        </table>
+        <h2>Menu Items</h2>
+        <ul>
+            <th:block th:each="cheese : ${menu.cheeses}">
+                <li th:text="${cheese.name}">
+                </li>
+            </th:block>
+        </ul>
 
         <p>
-            <a th:href="'/menu/add-item/' + ${menu.id}">Add Cheese</a>
+            <a th:href="'/menu/add-item/' + ${menu.id}">
+                Add Cheese
+            </a>
         </p>
-
     </body>
 </html>

@@ -23,6 +23,7 @@ public class AddMenuItem {
     public Iterable<Cheese> getCheeses() { return cheeses; }
 
     public int getMenuId() { return menuId; }
+    public void setMenuId(int menuId) { this.menuId = menuId; }
 
     public void setMenu(Menu menu) { this.menu = menu; }
 
