@@ -27,7 +27,7 @@ public class AddMenuItem {
     public void setMenu(Menu menu) { this.menu = menu; }
 
     public int getCheeseId() { return cheeseId; }
-    public void setCheeseId(int cheeseId) { cheeseId = cheeseId; }
+    public void setCheeseId(int cheeseId) { this.cheeseId = cheeseId; }
 
     //constructors
 
