@@ -12,9 +12,9 @@ public class AddMenuItem {
 
     private Iterable<Cheese> cheeses;
 
-    @NotNull private int MenuId;
+    @NotNull private int menuId;
 
-    @NotNull private int CheeseId;
+    @NotNull private int cheeseId;
 
     //getters and setters
 
@@ -22,11 +22,12 @@ public class AddMenuItem {
 
     public Iterable<Cheese> getCheeses() { return cheeses; }
 
-    public int getMenuId() { return MenuId; }
+    public int getMenuId() { return menuId; }
+
     public void setMenu(Menu menu) { this.menu = menu; }
 
-    public int getCheeseId() { return CheeseId; }
-    public void setCheeseId(int cheeseId) { CheeseId = cheeseId; }
+    public int getCheeseId() { return cheeseId; }
+    public void setCheeseId(int cheeseId) { cheeseId = cheeseId; }
 
     //constructors
 

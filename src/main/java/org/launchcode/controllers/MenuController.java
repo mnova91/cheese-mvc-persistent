@@ -78,7 +78,7 @@ import javax.validation.Valid;
         if (errors.hasErrors()) {
                 Menu menu = menuDao.findOne(form.getMenuId());
                 String title = "Add item to menu: " + menu.getName();
-                
+
                 model.addAttribute("title", title);
 
                 return "menu/add-item";
