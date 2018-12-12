@@ -1,6 +1,5 @@
 package org.launchcode.controllers;
 
-import org.launchcode.models.Category;
 import org.launchcode.models.Cheese;
 import org.launchcode.models.data.CategoryDao;
 import org.launchcode.models.data.CheeseDao;
@@ -19,7 +18,7 @@ import javax.validation.Valid;
  * Created by LaunchCode
  */
 @Controller
-@RequestMapping("cheese")
+@RequestMapping(value = "cheese")
 public class CheeseController {
 
     @Autowired
