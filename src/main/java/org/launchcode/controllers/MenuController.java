@@ -62,9 +62,9 @@ import javax.validation.Valid;
 
         Menu menu = menuDao.findOne(menuId);
         Iterable<Cheese> cheeses = cheeseDao.findAll();
-        AddMenuItem addMenuItem = new AddMenuItem(menu, cheeses);
+        AddMenuItem form = new AddMenuItem(menu, cheeses);
 
-        model.addAttribute("form", addMenuItem);
+        model.addAttribute("form", form);
 
         String title = "Add item to menu: " + menu.getName();
         model.addAttribute("menu", menu);
@@ -73,14 +73,18 @@ import javax.validation.Valid;
     }
 
     @RequestMapping(value = "add-item", method = RequestMethod.POST)
-    public String addItem(Model model, @ModelAttribute @Valid AddMenuItem addMenuItem, Errors errors) {
+    public String addItem(Model model, @ModelAttribute @Valid AddMenuItem form, Errors errors) {
 
         if (errors.hasErrors()) {
-            model.addAttribute("form", addMenuItem);
-            return "menu/add-item";
+                Menu menu = menuDao.findOne(form.getMenuId());
+                String title = "Add item to menu: " + menu.getName();
+                
+                model.addAttribute("title", title);
+
+                return "menu/add-item";
         }
-        int cheeseId = addMenuItem.getCheeseId();
-        int menuId = addMenuItem.getMenuId();
+        int cheeseId = form.getCheeseId();
+        int menuId = form.getMenuId();
         Menu menu = menuDao.findOne(menuId);
         Cheese cheese = cheeseDao.findOne(cheeseId);
         menu.addItem(cheese);
