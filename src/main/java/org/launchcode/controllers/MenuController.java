@@ -1,8 +1,10 @@
 package org.launchcode.controllers;
 
+import org.launchcode.models.Cheese;
 import org.launchcode.models.Menu;
 import org.launchcode.models.data.CheeseDao;
 import org.launchcode.models.data.MenuDao;
+import org.launchcode.models.forms.AddMenuItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -55,4 +57,34 @@ import javax.validation.Valid;
         return "menu/view";
     }
 
+    @RequestMapping(value = "add-item/{menuId}")
+    public String addMenuItem(Model model, @PathVariable int menuId) {
+
+        Menu menu = menuDao.findOne(menuId);
+        Iterable<Cheese> cheeses = cheeseDao.findAll();
+        AddMenuItem addMenuItem = new AddMenuItem(menu, cheeses);
+
+        model.addAttribute("form", addMenuItem);
+
+        String title = "Add item to menu: " + menu.getName();
+        model.addAttribute("menu", menu);
+        model.addAttribute("title", title);
+        return "menu/add-item";
+    }
+
+    @RequestMapping(value = "add-item", method = RequestMethod.POST)
+    public String addItem(Model model, @ModelAttribute @Valid AddMenuItem addMenuItem, Errors errors) {
+
+        if (errors.hasErrors()) {
+            model.addAttribute("form", addMenuItem);
+            return "menu/add-item";
+        }
+        int cheeseId = addMenuItem.getCheeseId();
+        int menuId = addMenuItem.getMenuId();
+        Menu menu = menuDao.findOne(menuId);
+        Cheese cheese = cheeseDao.findOne(cheeseId);
+        menu.addItem(cheese);
+        menuDao.save(menu);
+        return "redirect:/menu/view/" + menu.getId();
+    }
 }
