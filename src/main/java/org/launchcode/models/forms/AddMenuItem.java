@@ -26,6 +26,10 @@ public class AddMenuItem {
 
     public int getCheeseId() { return CheeseId; }
 
+    public void setMenu(Menu menu) { this.menu = menu; }
+
+    public void setCheeses(Iterable<Cheese> cheeses) { this.cheeses = cheeses; }
+
     //constructors
 
     public AddMenuItem() { }
