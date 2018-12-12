@@ -23,12 +23,10 @@ public class AddMenuItem {
     public Iterable<Cheese> getCheeses() { return cheeses; }
 
     public int getMenuId() { return MenuId; }
-
-    public int getCheeseId() { return CheeseId; }
-
     public void setMenu(Menu menu) { this.menu = menu; }
 
-    public void setCheeses(Iterable<Cheese> cheeses) { this.cheeses = cheeses; }
+    public int getCheeseId() { return CheeseId; }
+    public void setCheeseId(int cheeseId) { CheeseId = cheeseId; }
 
     //constructors
 
