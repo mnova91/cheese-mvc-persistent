@@ -45,7 +45,7 @@ import javax.validation.Valid;
         return "menu/add"; }
 
         menuDao.save(menu);
-        return "redirect:";
+        return "redirect:view/" + menu.getId();
     }
 
     @RequestMapping(value = "view/{menuId}")
@@ -89,6 +89,6 @@ import javax.validation.Valid;
         Cheese cheese = cheeseDao.findOne(cheeseId);
         menu.addItem(cheese);
         menuDao.save(menu);
-        return "redirect:/menu/view/" + menu.getId();
+        return "redirect:view/" + menu.getId();
     }
 }
